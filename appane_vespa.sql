@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mar 05, 2026 alle 20:15
+-- Creato il: Mar 05, 2026 alle 22:20
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -130,7 +130,7 @@ CREATE TABLE `ordine` (
   `id_ordine` int(11) NOT NULL,
   `importo` decimal(10,2) NOT NULL,
   `data` datetime NOT NULL,
-  `consegna_effettuata` tinyint(1) DEFAULT 0,
+  `stato` varchar(50) NOT NULL DEFAULT 'In attesa',
   `id_indirizzo` int(11) NOT NULL,
   `username_account` varchar(50) NOT NULL,
   `id_menu` int(11) NOT NULL
