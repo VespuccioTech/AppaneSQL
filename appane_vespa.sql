@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `account`
+-- Struttura della tabella `taccount`
 --
 
-CREATE TABLE `account` (
+CREATE TABLE `taccount` (
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -35,10 +35,10 @@ CREATE TABLE `account` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `cliente`
+-- Struttura della tabella `tcliente`
 --
 
-CREATE TABLE `cliente` (
+CREATE TABLE `tcliente` (
   `email` varchar(255) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `cognome` varchar(50) NOT NULL,
@@ -48,10 +48,10 @@ CREATE TABLE `cliente` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `composizione`
+-- Struttura della tabella `tcomposizione`
 --
 
-CREATE TABLE `composizione` (
+CREATE TABLE `tcomposizione` (
   `nome_ingrediente` varchar(100) NOT NULL,
   `nome_prodotto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -59,10 +59,10 @@ CREATE TABLE `composizione` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `immagine_ingrediente`
+-- Struttura della tabella `timmagine_ingrediente`
 --
 
-CREATE TABLE `immagine_ingrediente` (
+CREATE TABLE `timmagine_ingrediente` (
   `id_immagine` int(11) NOT NULL,
   `nome_ingrediente` varchar(100) NOT NULL,
   `percorso_file` varchar(255) NOT NULL
@@ -71,10 +71,10 @@ CREATE TABLE `immagine_ingrediente` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `immagine_prodotto`
+-- Struttura della tabella `timmagine_prodotto`
 --
 
-CREATE TABLE `immagine_prodotto` (
+CREATE TABLE `timmagine_prodotto` (
   `id_immagine` int(11) NOT NULL,
   `nome_prodotto` varchar(100) NOT NULL,
   `percorso_file` varchar(255) NOT NULL
@@ -83,10 +83,10 @@ CREATE TABLE `immagine_prodotto` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `indirizzo_di_consegna`
+-- Struttura della tabella `tindirizzo_di_consegna`
 --
 
-CREATE TABLE `indirizzo_di_consegna` (
+CREATE TABLE `tindirizzo_di_consegna` (
   `id_indirizzo` int(11) NOT NULL,
   `n_civico` varchar(10) NOT NULL,
   `cap` varchar(10) NOT NULL,
@@ -98,10 +98,10 @@ CREATE TABLE `indirizzo_di_consegna` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `ingrediente`
+-- Struttura della tabella `tingrediente`
 --
 
-CREATE TABLE `ingrediente` (
+CREATE TABLE `tingrediente` (
   `nome` varchar(100) NOT NULL,
   `descrizione` text DEFAULT NULL,
   `tipo` varchar(50) DEFAULT NULL
@@ -110,10 +110,10 @@ CREATE TABLE `ingrediente` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `menu_settimanale`
+-- Struttura della tabella `tmenu_settimanale`
 --
 
-CREATE TABLE `menu_settimanale` (
+CREATE TABLE `tmenu_settimanale` (
   `id_menu` int(11) NOT NULL,
   `data` date NOT NULL DEFAULT current_timestamp(),
   `giorno_ripubblicazione` varchar(20) DEFAULT 'Mercoledì',
@@ -123,10 +123,10 @@ CREATE TABLE `menu_settimanale` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `ordine`
+-- Struttura della tabella `tordine`
 --
 
-CREATE TABLE `ordine` (
+CREATE TABLE `tordine` (
   `id_ordine` int(11) NOT NULL,
   `importo` decimal(10,2) NOT NULL,
   `data` datetime NOT NULL,
@@ -139,10 +139,10 @@ CREATE TABLE `ordine` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `prodotto`
+-- Struttura della tabella `tprodotto`
 --
 
-CREATE TABLE `prodotto` (
+CREATE TABLE `tprodotto` (
   `nome` varchar(100) NOT NULL,
   `tipo` varchar(50) DEFAULT NULL,
   `prezzo` decimal(10,2) NOT NULL,
@@ -152,10 +152,10 @@ CREATE TABLE `prodotto` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `produzione`
+-- Struttura della tabella `tproduzione`
 --
 
-CREATE TABLE `produzione` (
+CREATE TABLE `tproduzione` (
   `nome_prodotto` varchar(100) NOT NULL,
   `id_menu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -163,10 +163,10 @@ CREATE TABLE `produzione` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `registrazione`
+-- Struttura della tabella `tregistrazione`
 --
 
-CREATE TABLE `registrazione` (
+CREATE TABLE `tregistrazione` (
   `email_cliente` varchar(255) NOT NULL,
   `username_account` varchar(50) NOT NULL,
   `data` date NOT NULL
@@ -175,10 +175,10 @@ CREATE TABLE `registrazione` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `selezione`
+-- Struttura della tabella `tselezione`
 --
 
-CREATE TABLE `selezione` (
+CREATE TABLE `tselezione` (
   `id_ordine` int(11) NOT NULL,
   `nome_prodotto` varchar(100) NOT NULL,
   `id_menu` int(11) NOT NULL,
@@ -190,90 +190,90 @@ CREATE TABLE `selezione` (
 --
 
 --
--- Indici per le tabelle `account`
+-- Indici per le tabelle `taccount`
 --
-ALTER TABLE `account`
+ALTER TABLE `taccount`
   ADD PRIMARY KEY (`username`);
 
 --
--- Indici per le tabelle `cliente`
+-- Indici per le tabelle `tcliente`
 --
-ALTER TABLE `cliente`
+ALTER TABLE `tcliente`
   ADD PRIMARY KEY (`email`);
 
 --
--- Indici per le tabelle `composizione`
+-- Indici per le tabelle `tcomposizione`
 --
-ALTER TABLE `composizione`
+ALTER TABLE `tcomposizione`
   ADD PRIMARY KEY (`nome_ingrediente`,`nome_prodotto`),
   ADD KEY `nome_prodotto` (`nome_prodotto`);
 
 --
--- Indici per le tabelle `immagine_ingrediente`
+-- Indici per le tabelle `timmagine_ingrediente`
 --
-ALTER TABLE `immagine_ingrediente`
+ALTER TABLE `timmagine_ingrediente`
   ADD PRIMARY KEY (`id_immagine`),
   ADD KEY `nome_ingrediente` (`nome_ingrediente`);
 
 --
--- Indici per le tabelle `immagine_prodotto`
+-- Indici per le tabelle `timmagine_prodotto`
 --
-ALTER TABLE `immagine_prodotto`
+ALTER TABLE `timmagine_prodotto`
   ADD PRIMARY KEY (`id_immagine`),
   ADD KEY `nome_prodotto` (`nome_prodotto`);
 
 --
--- Indici per le tabelle `indirizzo_di_consegna`
+-- Indici per le tabelle `tindirizzo_di_consegna`
 --
-ALTER TABLE `indirizzo_di_consegna`
+ALTER TABLE `tindirizzo_di_consegna`
   ADD PRIMARY KEY (`id_indirizzo`),
   ADD KEY `username_account` (`username_account`);
 
 --
--- Indici per le tabelle `ingrediente`
+-- Indici per le tabelle `tingrediente`
 --
-ALTER TABLE `ingrediente`
+ALTER TABLE `tingrediente`
   ADD PRIMARY KEY (`nome`);
 
 --
--- Indici per le tabelle `menu_settimanale`
+-- Indici per le tabelle `tmenu_settimanale`
 --
-ALTER TABLE `menu_settimanale`
+ALTER TABLE `tmenu_settimanale`
   ADD PRIMARY KEY (`id_menu`);
 
 --
--- Indici per le tabelle `ordine`
+-- Indici per le tabelle `tordine`
 --
-ALTER TABLE `ordine`
+ALTER TABLE `tordine`
   ADD PRIMARY KEY (`id_ordine`),
   ADD KEY `id_indirizzo` (`id_indirizzo`),
   ADD KEY `username_account` (`username_account`),
   ADD KEY `id_menu` (`id_menu`);
 
 --
--- Indici per le tabelle `prodotto`
+-- Indici per le tabelle `tprodotto`
 --
-ALTER TABLE `prodotto`
+ALTER TABLE `tprodotto`
   ADD PRIMARY KEY (`nome`);
 
 --
--- Indici per le tabelle `produzione`
+-- Indici per le tabelle `tproduzione`
 --
-ALTER TABLE `produzione`
+ALTER TABLE `tproduzione`
   ADD PRIMARY KEY (`nome_prodotto`,`id_menu`),
   ADD KEY `id_menu` (`id_menu`);
 
 --
--- Indici per le tabelle `registrazione`
+-- Indici per le tabelle `tregistrazione`
 --
-ALTER TABLE `registrazione`
+ALTER TABLE `tregistrazione`
   ADD PRIMARY KEY (`email_cliente`,`username_account`),
   ADD KEY `username_account` (`username_account`);
 
 --
--- Indici per le tabelle `selezione`
+-- Indici per le tabelle `tselezione`
 --
-ALTER TABLE `selezione`
+ALTER TABLE `tselezione`
   ADD PRIMARY KEY (`id_ordine`,`nome_prodotto`,`id_menu`),
   ADD KEY `nome_prodotto` (`nome_prodotto`),
   ADD KEY `id_menu` (`id_menu`);
@@ -283,33 +283,33 @@ ALTER TABLE `selezione`
 --
 
 --
--- AUTO_INCREMENT per la tabella `immagine_ingrediente`
+-- AUTO_INCREMENT per la tabella `timmagine_ingrediente`
 --
-ALTER TABLE `immagine_ingrediente`
+ALTER TABLE `timmagine_ingrediente`
   MODIFY `id_immagine` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `immagine_prodotto`
+-- AUTO_INCREMENT per la tabella `timmagine_prodotto`
 --
-ALTER TABLE `immagine_prodotto`
+ALTER TABLE `timmagine_prodotto`
   MODIFY `id_immagine` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `indirizzo_di_consegna`
+-- AUTO_INCREMENT per la tabella `tindirizzo_di_consegna`
 --
-ALTER TABLE `indirizzo_di_consegna`
+ALTER TABLE `tindirizzo_di_consegna`
   MODIFY `id_indirizzo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `menu_settimanale`
+-- AUTO_INCREMENT per la tabella `tmenu_settimanale`
 --
-ALTER TABLE `menu_settimanale`
+ALTER TABLE `tmenu_settimanale`
   MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `ordine`
+-- AUTO_INCREMENT per la tabella `tordine`
 --
-ALTER TABLE `ordine`
+ALTER TABLE `tordine`
   MODIFY `id_ordine` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -317,59 +317,59 @@ ALTER TABLE `ordine`
 --
 
 --
--- Limiti per la tabella `composizione`
+-- Limiti per la tabella `tcomposizione`
 --
-ALTER TABLE `composizione`
-  ADD CONSTRAINT `composizione_ibfk_1` FOREIGN KEY (`nome_ingrediente`) REFERENCES `ingrediente` (`nome`) ON DELETE CASCADE,
-  ADD CONSTRAINT `composizione_ibfk_2` FOREIGN KEY (`nome_prodotto`) REFERENCES `prodotto` (`nome`) ON DELETE CASCADE;
+ALTER TABLE `tcomposizione`
+  ADD CONSTRAINT `composizione_ibfk_1` FOREIGN KEY (`nome_ingrediente`) REFERENCES `tingrediente` (`nome`) ON DELETE CASCADE,
+  ADD CONSTRAINT `composizione_ibfk_2` FOREIGN KEY (`nome_prodotto`) REFERENCES `tprodotto` (`nome`) ON DELETE CASCADE;
 
 --
--- Limiti per la tabella `immagine_ingrediente`
+-- Limiti per la tabella `timmagine_ingrediente`
 --
-ALTER TABLE `immagine_ingrediente`
-  ADD CONSTRAINT `immagine_ingrediente_ibfk_1` FOREIGN KEY (`nome_ingrediente`) REFERENCES `ingrediente` (`nome`) ON DELETE CASCADE;
+ALTER TABLE `timmagine_ingrediente`
+  ADD CONSTRAINT `immagine_ingrediente_ibfk_1` FOREIGN KEY (`nome_ingrediente`) REFERENCES `tingrediente` (`nome`) ON DELETE CASCADE;
 
 --
--- Limiti per la tabella `immagine_prodotto`
+-- Limiti per la tabella `timmagine_prodotto`
 --
-ALTER TABLE `immagine_prodotto`
-  ADD CONSTRAINT `immagine_prodotto_ibfk_1` FOREIGN KEY (`nome_prodotto`) REFERENCES `prodotto` (`nome`) ON DELETE CASCADE;
+ALTER TABLE `timmagine_prodotto`
+  ADD CONSTRAINT `immagine_prodotto_ibfk_1` FOREIGN KEY (`nome_prodotto`) REFERENCES `tprodotto` (`nome`) ON DELETE CASCADE;
 
 --
--- Limiti per la tabella `indirizzo_di_consegna`
+-- Limiti per la tabella `tindirizzo_di_consegna`
 --
-ALTER TABLE `indirizzo_di_consegna`
-  ADD CONSTRAINT `indirizzo_di_consegna_ibfk_1` FOREIGN KEY (`username_account`) REFERENCES `account` (`username`) ON DELETE CASCADE;
+ALTER TABLE `tindirizzo_di_consegna`
+  ADD CONSTRAINT `indirizzo_di_consegna_ibfk_1` FOREIGN KEY (`username_account`) REFERENCES `taccount` (`username`) ON DELETE CASCADE;
 
 --
--- Limiti per la tabella `ordine`
+-- Limiti per la tabella `tordine`
 --
-ALTER TABLE `ordine`
-  ADD CONSTRAINT `ordine_ibfk_1` FOREIGN KEY (`id_indirizzo`) REFERENCES `indirizzo_di_consegna` (`id_indirizzo`),
-  ADD CONSTRAINT `ordine_ibfk_2` FOREIGN KEY (`username_account`) REFERENCES `account` (`username`),
-  ADD CONSTRAINT `ordine_ibfk_3` FOREIGN KEY (`id_menu`) REFERENCES `menu_settimanale` (`id_menu`);
+ALTER TABLE `tordine`
+  ADD CONSTRAINT `ordine_ibfk_1` FOREIGN KEY (`id_indirizzo`) REFERENCES `tindirizzo_di_consegna` (`id_indirizzo`),
+  ADD CONSTRAINT `ordine_ibfk_2` FOREIGN KEY (`username_account`) REFERENCES `taccount` (`username`),
+  ADD CONSTRAINT `ordine_ibfk_3` FOREIGN KEY (`id_menu`) REFERENCES `tmenu_settimanale` (`id_menu`);
 
 --
--- Limiti per la tabella `produzione`
+-- Limiti per la tabella `tproduzione`
 --
-ALTER TABLE `produzione`
-  ADD CONSTRAINT `produzione_ibfk_1` FOREIGN KEY (`nome_prodotto`) REFERENCES `prodotto` (`nome`) ON DELETE CASCADE,
-  ADD CONSTRAINT `produzione_ibfk_2` FOREIGN KEY (`id_menu`) REFERENCES `menu_settimanale` (`id_menu`) ON DELETE CASCADE;
+ALTER TABLE `tproduzione`
+  ADD CONSTRAINT `produzione_ibfk_1` FOREIGN KEY (`nome_prodotto`) REFERENCES `tprodotto` (`nome`) ON DELETE CASCADE,
+  ADD CONSTRAINT `produzione_ibfk_2` FOREIGN KEY (`id_menu`) REFERENCES `tmenu_settimanale` (`id_menu`) ON DELETE CASCADE;
 
 --
--- Limiti per la tabella `registrazione`
+-- Limiti per la tabella `tregistrazione`
 --
-ALTER TABLE `registrazione`
-  ADD CONSTRAINT `registrazione_ibfk_1` FOREIGN KEY (`email_cliente`) REFERENCES `cliente` (`email`) ON DELETE CASCADE,
-  ADD CONSTRAINT `registrazione_ibfk_2` FOREIGN KEY (`username_account`) REFERENCES `account` (`username`) ON DELETE CASCADE;
+ALTER TABLE `tregistrazione`
+  ADD CONSTRAINT `registrazione_ibfk_1` FOREIGN KEY (`email_cliente`) REFERENCES `tcliente` (`email`) ON DELETE CASCADE,
+  ADD CONSTRAINT `registrazione_ibfk_2` FOREIGN KEY (`username_account`) REFERENCES `taccount` (`username`) ON DELETE CASCADE;
 
 --
--- Limiti per la tabella `selezione`
+-- Limiti per la tabella `tselezione`
 --
-ALTER TABLE `selezione`
-  ADD CONSTRAINT `selezione_ibfk_1` FOREIGN KEY (`id_ordine`) REFERENCES `ordine` (`id_ordine`) ON DELETE CASCADE,
-  ADD CONSTRAINT `selezione_ibfk_2` FOREIGN KEY (`nome_prodotto`) REFERENCES `prodotto` (`nome`) ON DELETE CASCADE,
-  ADD CONSTRAINT `selezione_ibfk_3` FOREIGN KEY (`id_menu`) REFERENCES `menu_settimanale` (`id_menu`) ON DELETE CASCADE;
+ALTER TABLE `tselezione`
+  ADD CONSTRAINT `selezione_ibfk_1` FOREIGN KEY (`id_ordine`) REFERENCES `tordine` (`id_ordine`) ON DELETE CASCADE,
+  ADD CONSTRAINT `selezione_ibfk_2` FOREIGN KEY (`nome_prodotto`) REFERENCES `tprodotto` (`nome`) ON DELETE CASCADE,
+  ADD CONSTRAINT `selezione_ibfk_3` FOREIGN KEY (`id_menu`) REFERENCES `tmenu_settimanale` (`id_menu`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
