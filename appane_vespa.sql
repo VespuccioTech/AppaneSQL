@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mar 05, 2026 alle 22:20
+-- Creato il: Mar 08, 2026 alle 19:31
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -92,7 +92,8 @@ CREATE TABLE `tindirizzo_di_consegna` (
   `cap` varchar(10) NOT NULL,
   `via` varchar(100) NOT NULL,
   `citta` varchar(100) NOT NULL,
-  `username_account` varchar(50) NOT NULL
+  `username_account` varchar(50) NOT NULL,
+  `attivo` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -133,7 +134,8 @@ CREATE TABLE `tordine` (
   `stato` varchar(50) NOT NULL DEFAULT 'In attesa',
   `id_indirizzo` int(11) NOT NULL,
   `username_account` varchar(50) NOT NULL,
-  `id_menu` int(11) NOT NULL
+  `id_menu` int(11) NOT NULL,
+  `note` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
