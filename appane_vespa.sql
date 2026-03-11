@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mar 08, 2026 alle 19:31
+-- Creato il: Mar 11, 2026 alle 13:51
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -54,18 +54,6 @@ CREATE TABLE `tcliente` (
 CREATE TABLE `tcomposizione` (
   `nome_ingrediente` varchar(100) NOT NULL,
   `nome_prodotto` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `timmagine_ingrediente`
---
-
-CREATE TABLE `timmagine_ingrediente` (
-  `id_immagine` int(11) NOT NULL,
-  `nome_ingrediente` varchar(100) NOT NULL,
-  `percorso_file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -211,13 +199,6 @@ ALTER TABLE `tcomposizione`
   ADD KEY `nome_prodotto` (`nome_prodotto`);
 
 --
--- Indici per le tabelle `timmagine_ingrediente`
---
-ALTER TABLE `timmagine_ingrediente`
-  ADD PRIMARY KEY (`id_immagine`),
-  ADD KEY `nome_ingrediente` (`nome_ingrediente`);
-
---
 -- Indici per le tabelle `timmagine_prodotto`
 --
 ALTER TABLE `timmagine_prodotto`
@@ -285,12 +266,6 @@ ALTER TABLE `tselezione`
 --
 
 --
--- AUTO_INCREMENT per la tabella `timmagine_ingrediente`
---
-ALTER TABLE `timmagine_ingrediente`
-  MODIFY `id_immagine` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT per la tabella `timmagine_prodotto`
 --
 ALTER TABLE `timmagine_prodotto`
@@ -324,12 +299,6 @@ ALTER TABLE `tordine`
 ALTER TABLE `tcomposizione`
   ADD CONSTRAINT `composizione_ibfk_1` FOREIGN KEY (`nome_ingrediente`) REFERENCES `tingrediente` (`nome`) ON DELETE CASCADE,
   ADD CONSTRAINT `composizione_ibfk_2` FOREIGN KEY (`nome_prodotto`) REFERENCES `tprodotto` (`nome`) ON DELETE CASCADE;
-
---
--- Limiti per la tabella `timmagine_ingrediente`
---
-ALTER TABLE `timmagine_ingrediente`
-  ADD CONSTRAINT `immagine_ingrediente_ibfk_1` FOREIGN KEY (`nome_ingrediente`) REFERENCES `tingrediente` (`nome`) ON DELETE CASCADE;
 
 --
 -- Limiti per la tabella `timmagine_prodotto`
